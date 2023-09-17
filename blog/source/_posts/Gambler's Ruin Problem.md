@@ -1,5 +1,6 @@
 ---
 title: Gambler's Ruin Problem
+date: 2019-07-14 17:01:34
 ---
 
 *看[比特币白皮书](https://bitcoin.org/bitcoin.pdf "比特币白皮书")看到的一个比较有意思的概率问题，比特币白皮书上的问题和这个类似，讨论的是比特币的安全性，回滚攻击的概率。*
