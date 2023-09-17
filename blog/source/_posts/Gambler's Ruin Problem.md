@@ -75,12 +75,10 @@ f(n) = 1
 $$
 因此
 $$
-
 \begin{alignedat}{2}
 f(n) &= (q/p)^n ,\ \ &p>0.5\\
 f(n) &= 1,\ &p \le 0.5
 \end{alignedat}
-
 $$
 
 对此我又进一步的做了[概率分析](http://www.combination.net.cn/wp-content/uploads/2019/12/Gamblers-Ruin-Problem-Probability.html "概率分析")，输入的参数要在0.5~1之间，发现庄家基本不会输。
