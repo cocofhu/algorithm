@@ -26,7 +26,6 @@ $$
 $$
 \begin{alignedat}{1}
 x &= \frac{1\pm\sqrt{1-4pq}}{2p}
-
 \end{alignedat}
 $$
 
@@ -35,7 +34,6 @@ $$
 $$
 \begin{alignedat}{1}
 x &= \frac{1\pm\sqrt{(2p-1)^2}}{2p}
-
 \end{alignedat}
 $$
 
