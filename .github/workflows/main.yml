@@ -38,4 +38,6 @@ jobs:
           cd blog
           rm -rf node_modules && npm install --force
           npm install --save hexo-deployer-git
-          hexo g -d
+          hexo g
+          echo "cocofhu.com" > public/CNAME
+          hexo d
