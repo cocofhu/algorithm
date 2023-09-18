@@ -17,5 +17,7 @@ run git config --global user.name "cocofhu"
 
 run npm install -g hexo-cli
 
+copy build.sh /home/root
+
 
 cmd /bin/bash
