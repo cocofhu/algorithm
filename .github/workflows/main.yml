@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [15.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -36,4 +36,6 @@ jobs:
       - name: Deploy hexo
         run: |
           cd blog
+          rm -rf node_modules && npm install --force
+          npm install --save hexo-deployer-git
           hexo g -d
