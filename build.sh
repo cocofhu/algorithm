@@ -3,6 +3,5 @@ cd hexo-files/blog
 rm -rf node_modules && npm install --force
 npm install --save hexo-deployer-git
 
-cd ../..
-rm -rf hexo-files
+
 
