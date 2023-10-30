@@ -30,12 +30,13 @@ int manacher()
     }
     if(n == 0) return 0;
     M[n++] = '#';
-    M[n++] = 0;
+    M[n] = 0;
     int r=1,c=1,ans = 1;R[0]=1;
     for(int i = 1; i < n; ++i){
         int p = i < r ? min(R[2*c - i], r - i + 1) : 1;
         while(i + p < n && i - p >= 0 && M[i+p] == M[i-p]) ++p;
-        ans = max(ans, R[i] = p);
+        R[i] = p;
+        ans = max(ans, p);
         if(r < p + i - 1) r = p + i - 1, c = i;
     }
     return ans - 1;
