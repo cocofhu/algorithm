@@ -38,8 +38,8 @@ custom_file_path:
 
 # Schemes
 # scheme: Muse
-# scheme: Mist
-scheme: Pisces
+scheme: Mist
+# scheme: Pisces
 #scheme: Gemini
 
 # Dark Mode
@@ -370,9 +370,9 @@ codeblock:
     dark: prism-dark
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: true
     # Available values: default | flat | mac
-    style:
+    style: mac
   # Fold code block
   fold:
     enable: false
