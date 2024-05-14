@@ -39,5 +39,5 @@ jobs:
           rm -rf node_modules && npm install --force
           npm install --save hexo-deployer-git
           hexo g
-          echo "cocofhu.com" > public/CNAME
+          echo "algorithm.cocofhu.com" > public/CNAME
           hexo d
