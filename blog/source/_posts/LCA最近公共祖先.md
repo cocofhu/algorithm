@@ -130,6 +130,7 @@ int main(){
 
 #### 3、RMQ
 ```c++
+using namespace std;
 const int maxn = 500010;
 using ll = long long int;
 
@@ -142,7 +143,7 @@ void addEdge(int a, int b) {
     edges[pos].to = b;
     heads[a] = pos;
 }
-int st[maxn * 2][20], idx = -1, dfn[maxn * 2];
+int st[maxn * 2][20], idx = -1;
 int loc[maxn], depth[maxn];
 int Log2[maxn * 2];
 void dfs(int u, int fa){
