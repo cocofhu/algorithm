@@ -67,3 +67,64 @@ int main(){
 
 ```
 
+#### 2、Tarjan
+```c++
+const int maxn = 500010;
+using ll = long long int;
+
+struct Edge {
+    int next, to;
+} edges[maxn * 2];
+int heads[maxn], pos = 0;
+using pi = pair<int, int>;
+vector<pi> qst[maxn];
+int ans[maxn];
+void addEdge(int a, int b) {
+    edges[++pos].next = heads[a];
+    edges[pos].to = b;
+    heads[a] = pos;
+}
+int F[maxn];
+bool vis[maxn];
+int Find(int x){
+    return x == F[x] ? x : F[x] = Find(F[x]);
+}
+void dfs(int u, int fa){
+    F[u] = u;
+    vis[u] = true;
+    for(int i = heads[u]; ~i; i = edges[i].next){
+        int v = edges[i].to;
+        if(fa == v) continue;
+        dfs(v, u);
+    }
+    for(auto &p : qst[u]){
+        if(vis[p.first]) ans[p.second] = Find(p.first);
+    }
+    F[u] = fa;
+}
+
+int main(){
+    int n, m, s, a, b;
+    memset(heads, -1, sizeof(heads));
+    memset(vis, 0, sizeof(vis));
+    scanf("%d%d%d", &n, &m, &s);
+    for(int i = 0; i < n; ++i) qst[i].clear();
+    for(int i = 1; i < n; ++i){
+        scanf("%d%d", &b, &a);
+        if(a == b) continue;
+        addEdge(a, b);
+        addEdge(b, a);
+    }
+
+    for(int i = 0; i < m; ++i){
+        scanf("%d%d", &b, &a);
+        qst[a].emplace_back(b, i);
+        qst[b].emplace_back(a, i);
+    }
+    dfs(s, s);
+    for(int i = 0; i < m; ++i) printf("%d\n", ans[i]);
+    return 0;
+}
+
+```
+
