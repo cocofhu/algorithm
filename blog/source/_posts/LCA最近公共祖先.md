@@ -128,3 +128,70 @@ int main(){
 
 ```
 
+#### 3、RMQ
+```c++
+const int maxn = 500010;
+using ll = long long int;
+
+struct Edge {
+    int next, to;
+} edges[maxn * 2];
+int heads[maxn], pos = 0;
+void addEdge(int a, int b) {
+    edges[++pos].next = heads[a];
+    edges[pos].to = b;
+    heads[a] = pos;
+}
+int st[maxn * 2][20], idx = -1, dfn[maxn * 2];
+int loc[maxn], depth[maxn];
+int Log2[maxn * 2];
+void dfs(int u, int fa){
+    depth[u] = fa == u ? 0 : depth[fa] + 1;
+    st[++idx][0] = u;
+    loc[u] = idx;
+    for(int i = heads[u]; ~i; i = edges[i].next){
+        int v = edges[i].to;
+        if(fa == v) continue;
+        dfs(v, u);
+        st[++idx][0] = u;
+    }
+}
+int minNode(int u, int v){
+    return depth[u] < depth[v] ? u : v;
+}
+int query(int u, int v){
+    u = loc[u], v = loc[v];
+    if(u > v) swap(u, v);
+    int k = Log2[v - u + 1];
+    return minNode(st[u][k], st[v - (1 << k) + 1][k]);
+}
+int main(){
+    int n, m, s, a, b;
+    memset(heads, -1, sizeof(heads));
+    Log2[1] = 0, Log2[2] = 1;
+    for(int i = 3, len = maxn * 2; i < len; ++i) Log2[i] = Log2[i >> 1] + 1;
+    scanf("%d%d%d", &n, &m, &s);
+    for(int i = 1; i < n; ++i){
+        scanf("%d%d", &b, &a);
+        if(a == b) continue;
+        addEdge(a, b);
+        addEdge(b, a);
+    }
+    dfs(s, s);
+    // dfn 欧拉序列长度
+    int len = n * 2 - 1;
+    for(int i = 1; i < 20; ++i){
+        for(int j = 0; j < len; ++j){
+            int next = j + (1 << (i - 1));
+            if(next >= len) break;
+            st[j][i] = minNode(st[j][i - 1], st[next][i - 1]);
+        }
+    }
+        for(int i = 0; i < m; ++i){
+        scanf("%d%d", &b, &a);
+        printf("%d\n", query(a, b));
+    }
+    return 0;
+}
+```
+
